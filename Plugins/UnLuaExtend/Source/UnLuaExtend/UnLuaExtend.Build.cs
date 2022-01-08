@@ -38,7 +38,7 @@ public class UnLuaExtend : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				// ... add private dependencies that you statically link with here ...	
+				"DeveloperSettings",
 			}
 			);
 		
