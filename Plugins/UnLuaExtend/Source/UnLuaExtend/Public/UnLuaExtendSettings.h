@@ -13,5 +13,7 @@ UCLASS(config=Game, meta=(DisplayName="UnLua Extend"))
 class UNLUAEXTEND_API UUnLuaExtendSettings : public UDeveloperSettings
 {
 	GENERATED_BODY()
-	
+
+public:
+	virtual FName GetCategoryName() const override;
 };

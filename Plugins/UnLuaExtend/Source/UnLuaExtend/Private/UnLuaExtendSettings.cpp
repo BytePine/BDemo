@@ -2,3 +2,8 @@
 
 
 #include "UnLuaExtendSettings.h"
+
+FName UUnLuaExtendSettings::GetCategoryName() const
+{
+	return TEXT("Plugins");
+}
