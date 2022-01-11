@@ -39,6 +39,8 @@ public class UnLuaExtend : ModuleRules
 				"Slate",
 				"SlateCore",
 				"DeveloperSettings",
+				"Lua",
+				"UnLua",
 			}
 			);
 		

@@ -5,6 +5,8 @@
 #include "CoreMinimal.h"
 #include "Modules/ModuleManager.h"
 
+struct lua_State;
+
 class FUnLuaExtendModule : public IModuleInterface
 {
 public:
@@ -13,3 +15,6 @@ public:
 	virtual void StartupModule() override;
 	virtual void ShutdownModule() override;
 };
+
+UNLUAEXTEND_API void RegisterPackages(lua_State* L);
+UNLUAEXTEND_API void RequireMainModule(lua_State* L);

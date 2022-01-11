@@ -15,5 +15,20 @@ class UNLUAEXTEND_API UUnLuaExtendSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
-	virtual FName GetCategoryName() const override;
+	static UUnLuaExtendSettings* Get()
+	{
+		return GetMutableDefault<UUnLuaExtendSettings>();
+	}
+	
+	virtual FName GetCategoryName() const override
+	{
+		return TEXT("Plugins");
+	}
+
+public:
+	UPROPERTY(Config, EditDefaultsOnly)
+	TArray<FString> LuaPackagePath;
+
+	UPROPERTY(Config, EditDefaultsOnly)
+	FString MainModule;
 };
