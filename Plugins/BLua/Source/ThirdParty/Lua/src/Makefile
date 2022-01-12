@@ -67,7 +67,7 @@ $(LUAC_T): $(LUAC_O) $(LUA_A)
 	$(CC) -o $@ $(LDFLAGS) $(LUAC_O) $(LUA_A) $(LIBS)
 
 test:
-	./$(LUA_T) -v
+	./lua -v
 
 clean:
 	$(RM) $(ALL_T) $(ALL_O)
@@ -108,8 +108,6 @@ c89:
 	$(MAKE) $(ALL) SYSCFLAGS="-DLUA_USE_C89" CC="gcc -std=c89"
 	@echo ''
 	@echo '*** C89 does not guarantee 64-bit integers for Lua.'
-	@echo '*** Make sure to compile all external Lua libraries'
-	@echo '*** with LUA_USE_C89 to ensure consistency'
 	@echo ''
 
 FreeBSD NetBSD OpenBSD freebsd:

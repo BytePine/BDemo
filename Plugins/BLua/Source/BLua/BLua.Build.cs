@@ -38,7 +38,7 @@ public class BLua : ModuleRules
 				"Engine",
 				"Slate",
 				"SlateCore",
-				// ... add private dependencies that you statically link with here ...	
+				"Lua",
 			}
 			);
 		
