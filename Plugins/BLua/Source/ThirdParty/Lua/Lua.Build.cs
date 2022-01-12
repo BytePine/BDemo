@@ -39,6 +39,4 @@ public class Lua : ModuleRules
 
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "src"));
 	}
-		
-	}
 }
