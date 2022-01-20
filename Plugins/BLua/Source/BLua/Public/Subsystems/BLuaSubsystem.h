@@ -1,4 +1,4 @@
-// Copyright BytePine Games, Inc. All Rights Reserved.
+// Copyright Byteyang Games, Inc. All Rights Reserved.
 
 #pragma once
 

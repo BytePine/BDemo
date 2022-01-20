@@ -1,6 +1,8 @@
-// Copyright Epic Games, Inc. All Rights Reserved.
+// Copyright Byteyang Games, Inc. All Rights Reserved.
 
 #include "BLua.h"
+
+DEFINE_LOG_CATEGORY(LogBLua);
 
 #define LOCTEXT_NAMESPACE "FBLuaModule"
 
