@@ -6,6 +6,7 @@
 #include "Modules/ModuleManager.h"
 
 BLUA_API DECLARE_LOG_CATEGORY_EXTERN(LogBLua, Log, All);
+BLUA_API DECLARE_LOG_CATEGORY_EXTERN(LogBLuaDeveloper, Log, All);
 
 class FBLuaModule : public IModuleInterface
 {
