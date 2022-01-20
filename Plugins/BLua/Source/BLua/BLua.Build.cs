@@ -39,6 +39,7 @@ public class BLua : ModuleRules
 				"Slate",
 				"SlateCore",
 				"Lua",
+				"DeveloperSettings",
 			}
 			);
 		

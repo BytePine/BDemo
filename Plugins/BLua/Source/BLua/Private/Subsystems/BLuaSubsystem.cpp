@@ -51,3 +51,28 @@ void UBLuaSubsystem::DestroyState()
 		UE_LOG(LogBLuaDeveloper, Log, TEXT("DestroyState"));
 	}
 }
+
+void UBLuaSubsystem::AddSearcher(int(* Searcher)(lua_State*), int Index)
+{
+	// if #package.searchers 
+	lua_getglobal(L, "package");
+	lua_getfield(L, -1, "searchers");
+	lua_remove(L, -2);
+	if(!lua_istable(L, -1))
+	{
+		UE_LOG(LogBLuaDeveloper, Warning, TEXT("Invalid package.serachers!"));
+		return;
+	}
+
+	const uint32 Len = lua_rawlen(L, -1);
+	Index = Index < 0 ? (int)(Len + Index + 2) : Index;
+	for (int e = (int)Len + 1; e > Index; e--)
+	{
+		lua_rawgeti(L, -1, e - 1);
+		lua_rawseti(L, -2, e);
+	}
+    
+	lua_pushcfunction(L, Searcher);
+	lua_rawseti(L, -2, Index);
+	lua_pop(L, 1);
+}
