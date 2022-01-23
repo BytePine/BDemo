@@ -3,7 +3,9 @@
 #include "BLuaLog.h"
 #include "lua.hpp"
 
-BLUA_API int lua_BLog(lua_State* L)
+DEFINE_LOG_CATEGORY(LogBLua);
+
+int lua_BLog(lua_State* L)
 {
 	FString StrLog;
 	const int32 NArgs = lua_gettop(L);
@@ -23,7 +25,7 @@ BLUA_API int lua_BLog(lua_State* L)
 	return 0;
 }
 
-BLUA_API int lua_BWarning(lua_State* L)
+int lua_BWarning(lua_State* L)
 {
 	FString StrLog;
 	const int32 NArgs = lua_gettop(L);
@@ -43,7 +45,7 @@ BLUA_API int lua_BWarning(lua_State* L)
 	return 0;
 }
 
-BLUA_API int lua_BError(lua_State* L)
+int lua_BError(lua_State* L)
 {
 	FString StrLog;
 	const int32 NArgs = lua_gettop(L);
@@ -63,7 +65,7 @@ BLUA_API int lua_BError(lua_State* L)
 	return 0;
 }
 
-BLUA_API void luaL_openBLogs(lua_State* L)
+void luaL_openBLogs(lua_State* L)
 {
 	lua_register(L, "print", lua_BLog);
 	lua_register(L, "Log", lua_BLog);

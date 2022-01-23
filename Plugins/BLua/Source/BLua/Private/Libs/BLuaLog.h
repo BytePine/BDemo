@@ -2,6 +2,8 @@
 
 #pragma once
 
+BLUA_API DECLARE_LOG_CATEGORY_EXTERN(LogBLua, Log, All);
+
 struct lua_State;
 
 BLUA_API int lua_BLog(lua_State* L);

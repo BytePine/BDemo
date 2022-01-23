@@ -31,9 +31,6 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void DestroyState();
-
-public:
-	void AddSearcher(int (*Searcher)(lua_State *), int Index);
 	
 public:
 	FLuaStateDelegate OnLuaStateCreated;

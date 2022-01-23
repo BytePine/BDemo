@@ -2,9 +2,6 @@
 
 #include "BLua.h"
 
-DEFINE_LOG_CATEGORY(LogBLua);
-DEFINE_LOG_CATEGORY(LogBLuaDeveloper);
-
 #define LOCTEXT_NAMESPACE "FBLuaModule"
 
 void FBLuaModule::StartupModule()

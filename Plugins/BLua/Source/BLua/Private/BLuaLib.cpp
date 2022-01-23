@@ -4,8 +4,10 @@
 #include "lua.hpp"
 
 #include "Libs/BLuaLog.h"
+#include "Libs/BLuaFile.h"
 
-BLUA_API void luaL_openBLibs(lua_State* L)
+void luaL_openBLibs(lua_State* L)
 {
 	luaL_openBLogs(L);
+	luaL_openBFile(L);
 }
