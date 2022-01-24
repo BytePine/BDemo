@@ -31,6 +31,15 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	void DestroyState();
+
+	UFUNCTION(BlueprintCallable)
+	void AddPackagePath(FString Path);
+	
+	UFUNCTION(BlueprintCallable)
+	void Require(FString Path);
+	
+public:
+	lua_State* GetLuaState() const;
 	
 public:
 	FLuaStateDelegate OnLuaStateCreated;

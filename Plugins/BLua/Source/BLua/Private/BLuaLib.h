@@ -4,4 +4,4 @@
 
 struct lua_State;
 
-BLUA_API void luaL_openBLibs(lua_State* L);
+BLUA_API void luaL_OpenBLibs(lua_State* L);

@@ -65,7 +65,7 @@ int lua_BError(lua_State* L)
 	return 0;
 }
 
-void luaL_openBLogs(lua_State* L)
+void luaL_OpenBLogs(lua_State* L)
 {
 	lua_register(L, "print", lua_BLog);
 	lua_register(L, "Log", lua_BLog);

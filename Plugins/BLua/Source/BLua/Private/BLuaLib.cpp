@@ -6,8 +6,8 @@
 #include "Libs/BLuaLog.h"
 #include "Libs/BLuaFile.h"
 
-void luaL_openBLibs(lua_State* L)
+void luaL_OpenBLibs(lua_State* L)
 {
-	luaL_openBLogs(L);
-	luaL_openBFile(L);
+	luaL_OpenBLogs(L);
+	luaL_OpenBFile(L);
 }
