@@ -29,6 +29,11 @@ void UBaseWidget::NativeOpen(FString Params)
 	Status = EWidgetStatus::Open;
 }
 
+void UBaseWidget::NativeClose()
+{
+	
+}
+
 EWidgetStatus UBaseWidget::GetStatus() const
 {
 	return Status;

@@ -7,6 +7,8 @@
 #include "UISubsystem.generated.h"
 
 class UBaseWidget;
+class UDataTable;
+class FUITableRow;
 
 /**
  * UI管理
@@ -46,11 +48,39 @@ public:
 	 */
 	UFUNCTION(BlueprintPure)
 	bool IsOpening(FName UIName) const;
+
+	/**
+	 * @brief 连接参数
+	 * @param ParamsBefore 前部参数
+	 * @param ParamsAfter 后部参数
+	 * @return 参数
+	 */
+	UFUNCTION(BlueprintPure)
+	static FString LinkParams(FString ParamsBefore, FString ParamsAfter);
+private:
+	/**
+	 * @brief 获取UI行数据
+	 * @param UIName UI名字
+	 * @return UI行数据
+	 */
+	FUITableRow* GetUITableRow(FName UIName) const;
 	
 protected:
+	/**
+	 * @brief UI表
+	 */
+	UPROPERTY(BlueprintReadOnly)
+	UDataTable* UITable;
+	
+	/**
+	 * @brief 控件字典
+	 */
 	UPROPERTY()
-	TMap<FName, UBaseWidget*> UIMap;
+	TMap<FName, UBaseWidget*> WidgetMap;
 
+	/**
+	 * @brief 控件栈
+	 */
 	UPROPERTY()
-	TArray<FName> UIStack;
+	TArray<FName> WidgetStack;
 };

@@ -12,6 +12,7 @@ enum class EWidgetStatus
 	None,
 	Construct,
 	Open,
+	Close,
 	Destruct
 };
 
@@ -31,6 +32,8 @@ public:
 	virtual void NativeDestruct() override;
 	
 	virtual void NativeOpen(FString Params);
+
+	virtual void NativeClose();
 
 public:
 	/**
