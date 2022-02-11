@@ -15,11 +15,6 @@ class BFRAME_API UBFrameSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
-	static const UBFrameSettings* Get()
-	{
-		return GetDefault<UBFrameSettings>();
-	}
-
 	UBFrameSettings(const FObjectInitializer& ObjectInitializer)
 		:Super(ObjectInitializer)
 	{

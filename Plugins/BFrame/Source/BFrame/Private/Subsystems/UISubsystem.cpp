@@ -10,7 +10,7 @@ void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	const FSoftObjectPath* UITableObjectPth = &UBFrameSettings::Get()->UITable;
+	const FSoftObjectPath* UITableObjectPth = &GetDefault<UBFrameSettings>()->UITable;
 	if (UITableObjectPth && UITableObjectPth->IsValid())
 	{
 		UITable = Cast<UDataTable>(UITableObjectPth->TryLoad());

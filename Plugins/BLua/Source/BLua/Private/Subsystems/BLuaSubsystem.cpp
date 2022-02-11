@@ -32,7 +32,7 @@ void UBLuaSubsystem::CreateState()
 
 	OnLuaStateCreated.Broadcast(L);
 	
-	const UBLuaSettings* BLuaSettings = UBLuaSettings::Get();
+	const UBLuaSettings* BLuaSettings = GetDefault<UBLuaSettings>();
 	const FString PackagePath = FPaths::ConvertRelativePathToFull(FPaths::ProjectContentDir() + BLuaSettings->ScriptDirectory.Path);
 	AddPackagePath(PackagePath);
 	Require(PackagePath + TEXT("/") + BLuaSettings->MainPath);

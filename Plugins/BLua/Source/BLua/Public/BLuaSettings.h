@@ -15,11 +15,6 @@ class BLUA_API UBLuaSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
-	static const UBLuaSettings* Get()
-	{
-		return GetDefault<UBLuaSettings>();
-	}
-
 	UBLuaSettings(const FObjectInitializer& ObjectInitializer)
 		:Super(ObjectInitializer)
 	{

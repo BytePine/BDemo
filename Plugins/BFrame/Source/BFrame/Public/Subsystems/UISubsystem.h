@@ -8,7 +8,7 @@
 
 class UBaseWidget;
 class UDataTable;
-class FUITableRow;
+struct FUITableRow;
 
 /**
  * UI管理
