@@ -3,7 +3,6 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "Engine/DataTable.h"
 #include "Engine/DeveloperSettings.h"
 #include "BFrameSettings.generated.h"
 
@@ -16,9 +15,9 @@ class BFRAME_API UBFrameSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
-	static UBFrameSettings* Get()
+	static const UBFrameSettings* Get()
 	{
-		return GetMutableDefault<UBFrameSettings>();
+		return GetDefault<UBFrameSettings>();
 	}
 
 	UBFrameSettings(const FObjectInitializer& ObjectInitializer)

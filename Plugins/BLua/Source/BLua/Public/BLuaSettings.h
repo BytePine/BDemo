@@ -15,9 +15,9 @@ class BLUA_API UBLuaSettings : public UDeveloperSettings
 	GENERATED_BODY()
 
 public:
-	static UBLuaSettings* Get()
+	static const UBLuaSettings* Get()
 	{
-		return GetMutableDefault<UBLuaSettings>();
+		return GetDefault<UBLuaSettings>();
 	}
 
 	UBLuaSettings(const FObjectInitializer& ObjectInitializer)
