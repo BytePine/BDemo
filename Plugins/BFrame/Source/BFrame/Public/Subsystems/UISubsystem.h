@@ -19,6 +19,8 @@ class BFRAME_API UUISubsystem : public UWorldSubsystem
 	GENERATED_BODY()
 
 public:
+	UUISubsystem();
+	
 	/** Implement this for initialization of instances of the system */
 	virtual void Initialize(FSubsystemCollectionBase& Collection) override;
 
@@ -41,6 +43,12 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CloseUI(FName UIName);
 
+	/**
+	 * @brief 清理所有UI
+	 */
+	UFUNCTION(BlueprintCallable)
+	void ClearAll();
+	
 	/**
 	 * @brief 是否正在打开
 	 * @param UIName UI名字

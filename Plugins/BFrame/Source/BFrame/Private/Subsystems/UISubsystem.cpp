@@ -6,15 +6,27 @@
 #include "Blueprint/BaseWidget.h"
 #include "DataTable/UITableRow.h"
 
+UUISubsystem::UUISubsystem()
+	:UWorldSubsystem()
+	,UITable(nullptr)
+{
+	
+}
+
 void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
-	const FSoftObjectPath* UITableObjectPth = &GetDefault<UBFrameSettings>()->UITable;
-	if (UITableObjectPth && UITableObjectPth->IsValid())
+	if (!UITable)
 	{
-		UITable = Cast<UDataTable>(UITableObjectPth->TryLoad());
+		const FSoftObjectPath* UITableObjectPth = &GetDefault<UBFrameSettings>()->UITable;
+		if (UITableObjectPth && UITableObjectPth->IsValid())
+		{
+			UITable = Cast<UDataTable>(UITableObjectPth->TryLoad());
+		}
 	}
+
+	ClearAll();
 	
 }
 
@@ -66,6 +78,16 @@ void UUISubsystem::CloseUI(FName UIName)
 	Widget->NativeClose();
 
 	WidgetMap.Remove(UIName);
+}
+
+void UUISubsystem::ClearAll()
+{
+	for (const auto Tuple : WidgetMap)
+	{
+		Tuple.Value->NativeClose();
+	}
+
+	WidgetMap.Empty();
 }
 
 bool UUISubsystem::IsOpening(FName UIName) const
