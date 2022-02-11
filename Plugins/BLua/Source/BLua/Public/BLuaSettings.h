@@ -7,7 +7,7 @@
 #include "BLuaSettings.generated.h"
 
 /**
- * 
+ * BLua设置
  */
 UCLASS(Config=Game, defaultconfig, meta=(DisplayName=BLua))
 class BLUA_API UBLuaSettings : public UDeveloperSettings
@@ -20,7 +20,12 @@ public:
 		return GetMutableDefault<UBLuaSettings>();
 	}
 
-	UBLuaSettings(const FObjectInitializer& ObjectInitializer = FObjectInitializer::Get());
+	UBLuaSettings(const FObjectInitializer& ObjectInitializer)
+		:Super(ObjectInitializer)
+	{
+		ScriptDirectory.Path = TEXT("Script");
+		MainPath = TEXT("Main.lua");
+	}
 	
 	/** Gets the category for the settings, some high level grouping like, Editor, Engine, Game...etc. */
 	virtual FName GetCategoryName() const override
