@@ -46,20 +46,41 @@ struct FUITableRow : public FTableRowBase
 	GENERATED_BODY()
 public:
 	/**
-	 * @brief 默认参数
-	 */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	FString DefaultParam;
-	
-	/**
 	 * @brief 控件
 	 */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSoftClassPtr<UBaseWidget> Widget;
+	
+	/**
+	 * @brief 默认参数
+	 */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FString DefaultParam;
 
 	/**
 	 * @brief 层级
 	 */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	EHierarchy Hierarchy;
+};
+
+/**
+ * @brief 默认UI表结构
+ */
+USTRUCT()
+struct FDefaultUITableRow : public FTableRowBase
+{
+	GENERATED_BODY()
+public:
+	/**
+	 * @brief 父节点
+	 */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	FName Parent;
+
+	/**
+	 * @brief UI列表
+	 */
+	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
+	TArray<FName> UINameArray;
 };

@@ -19,12 +19,22 @@ void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 
 	if (!UITable)
 	{
-		const FSoftObjectPath* UITableObjectPth = &GetDefault<UBFrameSettings>()->UITable;
-		if (UITableObjectPth && UITableObjectPth->IsValid())
+		const FSoftObjectPath* UITableObjectPath = &GetDefault<UBFrameSettings>()->UITable;
+		if (UITableObjectPath && UITableObjectPath->IsValid())
 		{
-			UITable = Cast<UDataTable>(UITableObjectPth->TryLoad());
+			UITable = Cast<UDataTable>(UITableObjectPath->TryLoad());
 		}
 	}
+
+	if (!DefaultUITable)
+	{
+		const FSoftObjectPath* DefaultUITableObjectPath = &GetDefault<UBFrameSettings>()->DefaultUITable;
+		if (DefaultUITableObjectPath && DefaultUITableObjectPath->IsValid())
+		{
+			DefaultUITable = Cast<UDataTable>(DefaultUITableObjectPath->TryLoad());
+		}
+	}
+	
 }
 
 void UUISubsystem::Deinitialize()
@@ -35,6 +45,11 @@ void UUISubsystem::Deinitialize()
 }
 
 void UUISubsystem::OpenUI(FName UIName, FString Params)
+{
+	OpenUINoStack(UIName, Params);
+}
+
+void UUISubsystem::OpenUINoStack(FName UIName, FString Params)
 {
 	const FUITableRow* UITableRow = GetUITableRow(UIName);
 	if (!UITableRow)
@@ -77,6 +92,51 @@ void UUISubsystem::CloseUI(FName UIName)
 	Widget->NativeClose();
 
 	WidgetMap.Remove(UIName);
+}
+
+void UUISubsystem::SetDefault(FName DefaultName)
+{
+	if (!IsValid(DefaultUITable))
+	{
+		return;
+	}
+	
+	TSet<FName> DefaultSet;
+	TArray<FName> UIArray;
+
+	FName NextDefault;
+	do
+	{
+		FString ContextString;
+		FDefaultUITableRow* DefaultUITableRow = DefaultUITable->FindRow<FDefaultUITableRow>(DefaultName, ContextString);
+		if (DefaultUITableRow)
+		{
+			if (DefaultSet.Contains(DefaultUITable->RowStructName))
+			{
+				NextDefault = FName();
+			}
+			else
+			{
+				DefaultSet.Add(DefaultUITable->RowStructName);
+				NextDefault = DefaultUITableRow->Parent;
+
+				for (FName UIName : DefaultUITableRow->UINameArray)
+				{
+					UIArray.AddUnique(UIName);
+				}
+			}
+		}
+		else
+		{
+			NextDefault = FName();
+		}
+	}
+	while (!NextDefault.IsNone());
+
+	for (int i = UIArray.Num() - 1; i >= 0; --i)
+	{
+		OpenUINoStack(UIArray[i], FString());
+	}
 }
 
 void UUISubsystem::ClearAll()

@@ -35,6 +35,14 @@ public:
 	 */
 	UFUNCTION(BlueprintCallable)
 	void OpenUI(FName UIName, FString Params);
+
+	/**
+	 * @brief 打开UI不入栈
+	 * @param UIName UI名字
+	 * @param Params 打卡参数
+	 */
+	UFUNCTION(BlueprintCallable)
+	void OpenUINoStack(FName UIName, FString Params);
 	
 	/**
 	 * @brief 关闭UI
@@ -43,6 +51,13 @@ public:
 	UFUNCTION(BlueprintCallable)
 	void CloseUI(FName UIName);
 
+	/**
+	 * @brief 设置默认
+	 * @param DefaultName 默认名字
+	 */
+	UFUNCTION(BlueprintCallable)
+	void SetDefault(FName DefaultName);
+	
 	/**
 	 * @brief 清理所有UI
 	 */
@@ -79,6 +94,12 @@ protected:
 	 */
 	UPROPERTY(BlueprintReadOnly)
 	UDataTable* UITable;
+
+	/**
+	 * @brief 默认UI表
+	 */
+	UPROPERTY(BlueprintReadOnly)
+	UDataTable* DefaultUITable;
 	
 	/**
 	 * @brief 控件字典
