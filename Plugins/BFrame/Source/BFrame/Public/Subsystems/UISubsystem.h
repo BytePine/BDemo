@@ -11,7 +11,7 @@ class UDataTable;
 struct FUITableRow;
 
 /**
- * UI管理
+ * UI系统
  */
 UCLASS()
 class BFRAME_API UUISubsystem : public UWorldSubsystem

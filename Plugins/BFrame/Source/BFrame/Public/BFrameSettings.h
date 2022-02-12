@@ -39,4 +39,10 @@ public:
 	 */
 	UPROPERTY(Config, EditDefaultsOnly, BlueprintReadOnly, Category="UI", meta=(AllowedClasses="DataTable"))
 	FSoftObjectPath DefaultUITable;
+	
+	/**
+	 * @brief 关卡表
+	 */
+	UPROPERTY(Config, EditDefaultsOnly, BlueprintReadOnly, Category="Level", meta=(AllowedClasses="DataTable"))
+	FSoftObjectPath LevelTable;
 };
