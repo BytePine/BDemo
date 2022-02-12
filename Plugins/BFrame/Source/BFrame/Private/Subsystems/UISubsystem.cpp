@@ -9,6 +9,7 @@
 UUISubsystem::UUISubsystem()
 	:UWorldSubsystem()
 	,UITable(nullptr)
+	,DefaultUITable(nullptr)
 {
 	
 }
