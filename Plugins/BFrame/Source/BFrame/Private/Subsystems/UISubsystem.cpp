@@ -25,14 +25,13 @@ void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 			UITable = Cast<UDataTable>(UITableObjectPth->TryLoad());
 		}
 	}
-
-	ClearAll();
-	
 }
 
 void UUISubsystem::Deinitialize()
 {
 	Super::Deinitialize();
+
+	ClearAll();
 }
 
 void UUISubsystem::OpenUI(FName UIName, FString Params)
