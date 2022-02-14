@@ -27,11 +27,15 @@ void UBaseWidget::NativeDestruct()
 void UBaseWidget::NativeOpen(FString Params)
 {
 	Status = EWidgetStatus::Open;
+	OnOpen(Params);
 }
 
 void UBaseWidget::NativeClose()
 {
+	Status = EWidgetStatus::Close;
+	OnClose();
 	
+	RemoveFromViewport();
 }
 
 EWidgetStatus UBaseWidget::GetStatus() const

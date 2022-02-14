@@ -35,6 +35,20 @@ public:
 
 	virtual void NativeClose();
 
+protected:
+	/**
+	 * @brief 打开事件
+	 * @param Params 打开参数
+	 */
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnOpen(const FString& Params);
+
+	/**
+	 * @brief 关闭事件
+	 */
+	UFUNCTION(BlueprintImplementableEvent)
+	void OnClose();
+	
 public:
 	/**
 	 * @brief 获取控件状态
