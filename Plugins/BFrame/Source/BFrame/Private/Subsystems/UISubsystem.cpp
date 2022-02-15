@@ -101,24 +101,26 @@ void UUISubsystem::SetDefault(FName DefaultName)
 	{
 		return;
 	}
+
+	ClearAll();
 	
 	TSet<FName> DefaultSet;
 	TArray<FName> UIArray;
 
-	FName NextDefault;
+	FName NextDefault = DefaultName;
 	do
 	{
 		FString ContextString;
-		FDefaultUITableRow* DefaultUITableRow = DefaultUITable->FindRow<FDefaultUITableRow>(DefaultName, ContextString);
+		FDefaultUITableRow* DefaultUITableRow = DefaultUITable->FindRow<FDefaultUITableRow>(NextDefault, ContextString);
 		if (DefaultUITableRow)
 		{
-			if (DefaultSet.Contains(DefaultUITable->RowStructName))
+			if (DefaultSet.Contains(NextDefault))
 			{
 				NextDefault = FName();
 			}
 			else
 			{
-				DefaultSet.Add(DefaultUITable->RowStructName);
+				DefaultSet.Add(NextDefault);
 				NextDefault = DefaultUITableRow->Parent;
 
 				for (FName UIName : DefaultUITableRow->UINameArray)
