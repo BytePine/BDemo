@@ -27,9 +27,6 @@ public:
 public:
 	UFUNCTION(BlueprintCallable)
 	void OpenLevel(FName LevelName);
-
-protected:
-	void OnLevelAddedToWorld(ULevel* Level, UWorld* World);
 	
 protected:
 	/**

@@ -18,6 +18,11 @@ void ULevelSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
+	if (!GetWorld()->IsGameWorld())
+	{
+		return;
+	}
+	
 	if (!IsValid(LevelTable))
 	{
 		const FSoftObjectPath* LevelTableObjectPath = &GetDefault<UBFrameSettings>()->LevelTable;
@@ -26,9 +31,6 @@ void ULevelSubsystem::Initialize(FSubsystemCollectionBase& Collection)
 			LevelTable = Cast<UDataTable>(LevelTableObjectPath->TryLoad());
 		}
 	}
-	
-	UE_LOG(LogTemp, Log, TEXT("ULevelSubsystem::Initialize"));
-	FWorldDelegates::LevelAddedToWorld.AddUObject(this, &ULevelSubsystem::OnLevelAddedToWorld);
 }
 
 void ULevelSubsystem::Deinitialize()
@@ -49,9 +51,4 @@ void ULevelSubsystem::OpenLevel(FName LevelName)
 	{
 		UGameplayStatics::OpenLevelBySoftObjectPtr(this, LevelTableRow->Level);
 	}
-}
-
-void ULevelSubsystem::OnLevelAddedToWorld(ULevel* Level, UWorld* World)
-{
-	UE_LOG(LogTemp, Log, TEXT("ULevelSubsystem::OnPostWorldInit %s %s"), *Level->GetName(), *World->GetName());
 }

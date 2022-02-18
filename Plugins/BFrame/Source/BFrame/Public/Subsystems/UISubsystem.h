@@ -80,6 +80,10 @@ public:
 	 */
 	UFUNCTION(BlueprintPure)
 	static FString LinkParams(FString ParamsBefore, FString ParamsAfter);
+
+protected:
+	virtual void OnWorldInitializedActors(const UWorld::FActorsInitializedParams& OnActorInitParams);
+	
 private:
 	/**
 	 * @brief 获取UI行数据
@@ -112,4 +116,7 @@ protected:
 	 */
 	UPROPERTY()
 	TArray<FName> WidgetStack;
+
+private:
+	FDelegateHandle WorldInitializedActorsHandle;
 };

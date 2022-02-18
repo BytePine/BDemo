@@ -18,6 +18,11 @@ void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 {
 	Super::Initialize(Collection);
 
+	if (!GetWorld()->IsGameWorld())
+	{
+		return;
+	}
+	
 	if (!UITable)
 	{
 		const FSoftObjectPath* UITableObjectPath = &GetDefault<UBFrameSettings>()->UITable;
@@ -36,12 +41,20 @@ void UUISubsystem::Initialize(FSubsystemCollectionBase& Collection)
 		}
 	}
 	
+	WorldInitializedActorsHandle = FWorldDelegates::OnWorldInitializedActors.AddUObject(this, &UUISubsystem::OnWorldInitializedActors);
 }
 
 void UUISubsystem::Deinitialize()
 {
 	Super::Deinitialize();
 
+	if (!GetWorld()->IsGameWorld())
+	{
+		return;
+	}
+	
+	FWorldDelegates::OnWorldInitializedActors.Remove(WorldInitializedActorsHandle);
+	
 	ClearAll();
 }
 
@@ -170,6 +183,11 @@ FString UUISubsystem::LinkParams(FString ParamsBefore, FString ParamsAfter)
 	}
 	
 	return FString::Printf(TEXT("%s|%s"), *ParamsBefore, *ParamsAfter);
+}
+
+void UUISubsystem::OnWorldInitializedActors(const UWorld::FActorsInitializedParams& OnActorInitParams)
+{
+	SetDefault(OnActorInitParams.World->GetFName());
 }
 
 FUITableRow* UUISubsystem::GetUITableRow(FName UIName) const

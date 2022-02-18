@@ -19,10 +19,4 @@ public:
 	 */
 	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
 	TSoftObjectPtr<UWorld> Level;
-	
-	/**
-	 * @brief 默认UI
-	 */
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	FName DefaultUI;
 };
