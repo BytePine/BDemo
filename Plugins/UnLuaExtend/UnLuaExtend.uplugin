@@ -21,6 +21,11 @@
 			"LoadingPhase": "Default"
 		},
 		{
+			"Name": "UnLuaExtendEditor",
+			"Type": "Editor",
+			"LoadingPhase": "Default"
+		},
+		{
 			"Name": "UnLuaTemplate",
 			"Type": "Editor",
 			"LoadingPhase": "Default"
