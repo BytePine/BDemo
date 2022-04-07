@@ -1,7 +1,7 @@
 // Copyright Byteyang Games, Inc. All Rights Reserved.
 
 
-#include "Blueprint/BaseWidget.h"
+#include "UI/BaseWidget.h"
 
 UBaseWidget::UBaseWidget(const FObjectInitializer& ObjectInitializer)
 	:Super(ObjectInitializer)
